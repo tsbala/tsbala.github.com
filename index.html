@@ -13,7 +13,7 @@
  		 
  		 FB.api('/me', function(user) {
 			if (user != null) {
-				alert('Welcome, '+ user.name+"!");
+				alert('Welcome, '+ user.name+"(" + user.Id + ")!");
 			}
 		 });
       </script>
