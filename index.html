@@ -10,6 +10,16 @@
             appId:'155271981196630', cookie:true, 
             status:true, xfbml:true 
          });
+ 		 
+		 FB.getLoginStatus(function(response) {
+		   if (response.session) {
+			FB.api('/me', function(response) {
+                alert('Welcome, '+response.name+"!");
+            });
+ 		   } else {
+			// no user session available, someone you dont know
+		   }
+		 });
       </script>
       <fb:login-button>Login with Facebook</fb:login-button>
     </body>
