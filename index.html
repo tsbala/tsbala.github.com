@@ -29,14 +29,14 @@
 	  }());
 	  
 		function updateButton(response) {
-		  Log.info('Updating Button', response);
+		  console.info('Updating Button', response);
 		  var button = document.getElementById('fb-auth');
 
 		  if (response.session) {
 			button.innerHTML = 'Logout';
 			button.onclick = function() {
 			  FB.logout(function(response) {
-				Log.info('FB.logout callback', response);
+				console.info('FB.logout callback', response);
 				UserName.innerText = response.session.user.name;
 				UserId.innerText = response.session.user.id;
 			  });
@@ -45,21 +45,19 @@
 			button.innerHTML = 'Login';
 			button.onclick = function() {
 			  FB.login(function(response) {
-				Log.info('FB.login callback', response);
+				console.info('FB.login callback', response);
 			
 				if (response.status == 'connected') {
-					FB.getLoginStatus(function(response) {
-						Log.info('FB.getLoginStatus callback', response);
+					FB.getLoginStatus(function(response) {console.info('FB.getLoginStatus callback', response);
 						if (response.session) {
-							Log.info('User is logged in');
+							console.info('User is logged in');
 							UserName.innerText = response.session.user.name;
 							UserId.innerText = response.session.user.id;
-						} else {
-							Log.info('User is logged out');
+						} else {							console.info('User is logged out');
 						}
 					}, true);
-				} else {
-					Log.info('User is logged out');
+				} else { 
+					console.info('User is logged out');
 					UserName.innerText = "";
 					UserId.innerText = "";
 				}
