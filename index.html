@@ -1,36 +1,94 @@
  <html>
+ <head>
+	FB login example
+ </head>
+ <body>
+    <button id="fb-auth">Login</button>
+	<p id="UserName"></p>
+	<p id="UserId"></p>
+
+	<script>
+		function updateButton(response) {
+		  Log.info('Updating Button', response);
+		  var button = document.getElementById('fb-auth');
+
+		  if (response.session) {
+			UserName.innerText = response.session.user.name;
+			UserId.innerText = response.session.user.id;
+			button.innerHTML = 'Logout';
+			button.onclick = function() {
+			  FB.logout(function(response) {
+				Log.info('FB.logout callback', response);
+				UserName.innerText = response.session.user.name;
+				UserId.innerText = response.session.user.id;
+			  });
+			};
+		  } else {
+			button.innerHTML = 'Login';
+			button.onclick = function() {
+			  FB.login(function(response) {
+				Log.info('FB.login callback', response);
+			
+				if (response.status == 'connected') {
+					FB.getLoginStatus(function(response) {
+						Log.info('FB.getLoginStatus callback', response);
+						if (response.session) {
+							Log.info('User is logged in');
+							UserName.innerText = response.session.user.name;
+							UserId.innerText = response.session.user.id;
+						} else {
+							Log.info('User is logged out');
+						}
+					}, true);
+				} else {
+					Log.info('User is logged out');
+					UserName.innerText = "";
+					UserId.innerText = "";
+				}
+			  });
+			};
+		  }
+		}
+
+		// run it once with the current status and also whenever the status changes
+		FB.getLoginStatus(updateButton);
+		FB.Event.subscribe('auth.statusChange', updateButton);
+	</script>
+</body>
+	<!--
     <head>
         <title>Client Flow Example</title>
     </head>
     <body>
         <script>
 
-        var appId = "155271981196630";
+			var appId = "155271981196630";
 
-        if(window.location.hash.length == 0)
-        {
-            url = "https://www.facebook.com/dialog/oauth?client_id=" + 
-                     appId  + "&redirect_uri=" + window.location +
-                     "&response_type=token";
-            window.location = url;
+			if(window.location.hash.length == 0)
+			{
+				url = "https://www.facebook.com/dialog/oauth?client_id=" + 
+						 appId  + "&redirect_uri=" + window.location +
+						 "&response_type=token";
+				window.location = url;
 
-        } else {
-            accessToken = window.location.hash.substring(1);
-            graphUrl = "https://graph.facebook.com/me?" + accessToken +
-                        "&callback=displayUser"
+			} else {
+				accessToken = window.location.hash.substring(1);
+				graphUrl = "https://graph.facebook.com/me?" + accessToken +
+							"&callback=displayUser"
 
-            //use JSON-P to call the graph
-            var script = document.createElement("script");
-            script.src = graphUrl;
-            document.body.appendChild(script);  
-        }
+				//use JSON-P to call the graph
+				var script = document.createElement("script");
+				script.src = graphUrl;
+				document.body.appendChild(script);  
+			}
 
-        function displayUser(user) {
-            userName.innerText = user.name;
-			userId.innerText = user.id;
-        }
+			function displayUser(user) {
+				userName.innerText = user.name;
+				userId.innerText = user.id;
+			}
         </script>
         <p id="userName"></p>
 		<p id="userId"></p>
     </body>
+	-->
 </html>
