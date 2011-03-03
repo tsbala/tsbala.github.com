@@ -1,12 +1,33 @@
  <html>
  <head>
-	<script async="" src="http://connect.facebook.net/en_US/all.js"></script>
+	FB Login sample
  </head>
  <body>
     <button id="fb-auth">Login</button>
 	<p id="UserName"></p>
 	<p id="UserId"></p>
+	<div id="fb-root"></div>
 	<script>
+	  var appId = "155271981196630";
+	  window.fbAsyncInit = function() {
+		FB.init({
+		  appId  : appId,
+		  status : true, // check login status
+		  cookie : true, // enable cookies to allow the server to access the session
+		  xfbml  : true  // parse XFBML
+		});
+
+		FB.getLoginStatus(updateButton);
+		FB.Event.subscribe('auth.statusChange', updateButton);		
+	  };
+
+	  (function() {
+		var e = document.createElement('script');
+		e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+		e.async = true;
+		document.getElementById('fb-root').appendChild(e);
+	  }());
+	  
 		function updateButton(response) {
 		  Log.info('Updating Button', response);
 		  var button = document.getElementById('fb-auth');
@@ -45,12 +66,8 @@
 			  });
 			};
 		  }
-		}
-
-		// run it once with the current status and also whenever the status changes
-		FB.getLoginStatus(updateButton);
-		FB.Event.subscribe('auth.statusChange', updateButton);
-	</script>
+		}	  
+	</script>	
 </body>
 	<!--
     <head>
