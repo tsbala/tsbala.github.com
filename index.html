@@ -9,6 +9,16 @@
 	<div id="fb-root"></div>
 	<script>
         window.fbAsyncInit = function () {
+		// run it once with the current status and also whenever the status changes
+		FB.getLoginStatus(updateButton);
+		FB.Event.subscribe('auth.statusChange', updateButton);
+        };
+        (function () {
+            var e = document.createElement('script'); e.async = true;
+            e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+            document.getElementById('fb-root').appendChild(e);
+        } ());
+		
 		function updateButton(response) {
 		  Log.info('Updating Button', response);
 		  var button = document.getElementById('fb-auth');
@@ -49,17 +59,7 @@
 			  });
 			};
 		  }
-		}
-
-		// run it once with the current status and also whenever the status changes
-		FB.getLoginStatus(updateButton);
-		FB.Event.subscribe('auth.statusChange', updateButton);
-        };
-        (function () {
-            var e = document.createElement('script'); e.async = true;
-            e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
-            document.getElementById('fb-root').appendChild(e);
-        } ());
+		}		
 	</script>
 </body>
 	<!--
