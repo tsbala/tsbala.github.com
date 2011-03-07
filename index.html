@@ -39,9 +39,9 @@
 				if(user != null) {
 					var image = document.getElementById('UserImage');
 					image.src = 'http://graph.facebook.com/' + user.id + '/picture';
-					UserName.Text = user.name;
-					UserId.Text = user.id;
-					UserEmail.Text = user.email;
+					UserName.innerHTML = user.name;
+					UserId.innerHTML = user.id;
+					UserEmail.innerHTML = user.email;
 				}
 			});		  
 		  } else {
