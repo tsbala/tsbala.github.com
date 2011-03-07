@@ -2,13 +2,13 @@
  <head>
  </head>
  <body>
-    <div id="fbauth"></div>
 	<p id="UserName"></p>
 	<p id="UserId"></p>
 	<p><img id="UserImage" /></p>
 	<p id="UserEmail"></p>
 	<p id="accessToken"></p>
 	<div id="fb-root"></div>
+	<div id="fbauth"></div>
 	<script>
 	  var appId = "155271981196630";
 	  window.fbAsyncInit = function() {
@@ -21,6 +21,7 @@
 
 		FB.getLoginStatus(updateButton);
 		FB.Event.subscribe('auth.statusChange', updateButton);		
+		fbauth.innerHTML = '<fb:login-button onlogin="updateButton" perms="email,user_checkins">Login with Facebook</fb:login-button>';
 	  };
 
 	  (function() {
@@ -49,7 +50,7 @@
     	  };
 		}
 	</script>	
-</body>
+ </body>
 	<!--
     <head>
         <title>Client Flow Example</title>
