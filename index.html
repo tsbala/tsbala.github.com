@@ -5,6 +5,8 @@
     <div id="fb-auth"></div>
 	<p id="UserName"></p>
 	<p id="UserId"></p>
+	<p><img id="UserImage" /></p>
+	<p id="UserEmail"></p>
 	<p id="accessToken"></p>
 	<div id="fb-root"></div>
 	<script>
@@ -33,6 +35,15 @@
 
 		  if (response.session) {
 			accessToken.innerText = response.session.access_token;
+			FB.api('/me', function(user) {
+				if(user != null) {
+					var image = document.getElementById('UserImage');
+					image.src = 'http://graph.facebook.com/' + user.id + '/picture';
+					UserName.Text = user.name;
+					UserId.Text = user.id;
+					UserEmail.Text = user.email;
+				}
+			});		  
 		  } else {
 			fb-auth.innerHTML = '<fb:login-button onlogin="updateButton" perms="email,user_checkins">Login with Facebook</fb:login-button>';
     	  };
