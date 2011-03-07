@@ -1,11 +1,11 @@
  <html>
  <head>
-	FB Login sample
  </head>
  <body>
-    <button id="fb-auth">Login</button>
+    <div id="fb-auth"></div>
 	<p id="UserName"></p>
 	<p id="UserId"></p>
+	<p id="accessToken"></p>
 	<div id="fb-root"></div>
 	<script>
 	  var appId = "155271981196630";
@@ -30,41 +30,13 @@
 	  
 		function updateButton(response) {
 		  console.info('Updating Button', response);
-		  var button = document.getElementById('fb-auth');
 
 		  if (response.session) {
-			button.innerHTML = 'Logout';
-			button.onclick = function() {
-			  FB.logout(function(response) {
-				console.info('FB.logout callback', response);
-				UserName.innerText = response.session.user.name;
-				UserId.innerText = response.session.user.id;
-			  });
-			};
+			accessToken.innerText = response.session.access_token;
 		  } else {
-			button.innerHTML = 'Login';
-			button.onclick = function() {
-			  FB.login(function(response) {
-				console.info('FB.login callback', response);
-			
-				if (response.status == 'connected') {
-					FB.getLoginStatus(function(response) {console.info('FB.getLoginStatus callback', response);
-						if (response.session) {
-							console.info('User is logged in');
-							UserName.innerText = response.session.user.name;
-							UserId.innerText = response.session.user.id;
-						} else {							console.info('User is logged out');
-						}
-					}, true);
-				} else { 
-					console.info('User is logged out');
-					UserName.innerText = "";
-					UserId.innerText = "";
-				}
-			  });
-			};
-		  }
-		}	  
+			fb-auth.innerHTML = '<fb:login-button onlogin="updateButton" perms="email,user_checkins">Login with Facebook</fb:login-button>';
+    	  };
+		}
 	</script>	
 </body>
 	<!--
@@ -101,6 +73,7 @@
         </script>
         <p id="userName"></p>
 		<p id="userId"></p>
+		<p id="accessToken"></p>
     </body>
 	-->
 </html>
