@@ -25,6 +25,9 @@
 		FB.getLoginStatus(updateButton);
 		FB.Event.subscribe('auth.statusChange', updateButton);		
 		fbauth.innerHTML = '<fb:login-button onlogin="updateButton" perms="email" autologoutlink="true">Login with Facebook</fb:login-button>';
+		FB.Event.subscribe('comment.create', function(response) {
+            alert(response.commentID);
+        });         		
 	  };
 
 	  (function() {
