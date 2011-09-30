@@ -11,10 +11,9 @@
 				var promptForFriendsInvite = function () {
 					FB.ui({
 							method: 'apprequests',
-							message: '<%: Model.Message %>',
-							title: '<%: Model.Title %>',  
+							message: 'Test request',
+							title: 'Title',  
 							display: 'iframe', 
-							data: 'test'
 							}, 
 							function(response) {
 								window.setTimeout(function() { window.location.href = $('#<%: Model.LinkElementId %>').attr("href"); }, 500);
