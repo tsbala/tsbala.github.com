@@ -1,5 +1,4 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:fb="https://www.facebook.com/2008/fbml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="https://www.facebook.com/2008/fbml">
   <head>
     <title>Request Tester C</title>
   </head>
@@ -40,6 +39,8 @@
       function sendRequestToManyRecipients() {
         FB.ui({method: 'apprequests',
           message: 'My Great Request',
+		  display: 'iframe',
+		  data: ''
         }, requestCallback);
       }
       
