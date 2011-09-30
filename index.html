@@ -17,11 +17,13 @@
 		});
 	</script>	
 	<script type="text/javascript">
-			FB.ui({
-					method: 'apprequests',
-					message: 'Test request',
-					title: 'Title'
-					}, function(response) { return true;  });
+		FB.ui({
+				method: 'apprequests',
+				message: 'Test request',
+				title: 'Title',
+				data: 'hello world',
+				display: 'iframe'
+				}, function(response) { return true;  });
 	</script>
  </body>
 </html>
