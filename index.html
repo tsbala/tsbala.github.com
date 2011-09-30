@@ -1,14 +1,13 @@
- <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="https://www.facebook.com/2008/fbml">
-    <head>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="https://www.facebook.com/2008/fbml">
+ <head>
         <title>Client Flow Example</title>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
 		<script src="http://connect.facebook.net/en_US/all.js"></script>
-    </head>
  </head>
  <body>
 	<div id="fb-root"></div>
 	<script type="text/javascript">
-  	    var appId = '125980610784627';
+		var appId = '125980610784627';
 		FB.init({
 		  appId  : appId,
 		  status : true, // check login status
@@ -16,15 +15,12 @@
 		  oauth  : true
 		});
 	</script>	
-	
-	<div>
-		<script type="text/javascript">
-				FB.ui({
-						method: 'apprequests',
-						message: 'Test request',
-						title: 'Title'
-						}, function(response) { return true;  });
-		</script>
-	</div>	
+	<script type="text/javascript">
+			FB.ui({
+					method: 'apprequests',
+					message: 'Test request',
+					title: 'Title'
+					}, function(response) { return true;  });
+	</script>
  </body>
 </html>
