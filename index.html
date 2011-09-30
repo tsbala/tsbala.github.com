@@ -8,34 +8,22 @@
 	<div id="fb-root"></div>
 	<script type="text/javascript">
   	    var appId = '125980610784627';
-	    window.fbAsyncInit = function() {
 		FB.init({
 		  appId  : appId,
 		  status : true, // check login status
 		  cookie : true, // enable cookies to allow the server to access the session
-		  xfbml  : true  // parse XFBML
+		  oauth  : true
 		});
-		$(document).trigger("facebookReady");
-	  };
-
-	  (function() {
-		var e = document.createElement('script');
-		e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
-		e.async = true;
-		document.getElementById('fb-root').appendChild(e);
-	  }());
 	</script>	
 	
 	<div>
 		<script type="text/javascript">
-			$(document).bind('facebookReady', function(){
 				FB.ui({
 						method: 'apprequests',
 						message: 'Test request',
 						title: 'Title',  
 						display: 'iframe', 
 						});
-			});
 		</script>
 	</div>	
  </body>
