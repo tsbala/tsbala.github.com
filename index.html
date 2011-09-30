@@ -8,22 +8,17 @@
 	<div>
 		<script type="text/javascript">
 			$(document).bind('facebookReady', function(){
-				var promptForFriendsInvite = function () {
-					FB.ui({
-							method: 'apprequests',
-							message: 'Test request',
-							title: 'Title',  
-							display: 'iframe', 
-							}, 
-							function(response) {
-								window.setTimeout(function() { window.location.href = $('#<%: Model.LinkElementId %>').attr("href"); }, 500);
-								return true;
-							});
-
-					return false;
-				};
-				promptForFriendsInvite();
-			});	  
+				FB.ui({
+						method: 'apprequests',
+						message: 'Test request',
+						title: 'Title',  
+						display: 'iframe', 
+						}, 
+						function(response) {
+							window.setTimeout(function() { window.location.href = $('#<%: Model.LinkElementId %>').attr("href"); }, 500);
+							return true;
+						});
+			}
 		</script>
 	</div>
  
