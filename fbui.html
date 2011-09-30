@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:fb="https://www.facebook.com/2008/fbml">
+  <head>
+    <title>Request Tester C</title>
+  </head>
+
+  <body>
+    <div id="fb-root"></div>
+    <script src="http://connect.facebook.net/en_US/all.js"></script>
+    <p>
+      <input type="button"
+        onclick="sendRequestToOneRecipient(); return false;"
+        value="Send Request to One User"
+      />
+      <input type="text" value="User ID" name="user_id" />
+      </p>
+    <p>
+    <input type="button"
+      onclick="sendRequestToManyRecipients(); return false;"
+      value="Send Request to Many Users"
+    />
+    </p>
+    
+    <script>
+      FB.init({
+        appId  : '125980610784627',
+        status : true,
+        cookie : true,
+        oauth: true
+      });
+
+      function sendRequestToOneRecipient() {
+        var user_id = document.getElementsByName("user_id")[0].value;
+        FB.ui({method: 'apprequests',
+          message: 'My Great Request',
+          to: user_id, 
+        }, requestCallback);
+      }
+
+      function sendRequestToManyRecipients() {
+        FB.ui({method: 'apprequests',
+          message: 'My Great Request',
+        }, requestCallback);
+      }
+      
+      function requestCallback(response) {
+        // Handle callback here
+      }
+    </script>
+  </body>
+</html>
