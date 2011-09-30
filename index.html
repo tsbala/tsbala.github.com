@@ -5,19 +5,6 @@
     </head>
  </head>
  <body>
-	<div>
-		<script type="text/javascript">
-			$(document).bind('facebookReady', function(){
-				FB.ui({
-						method: 'apprequests',
-						message: 'Test request',
-						title: 'Title',  
-						display: 'iframe', 
-						});
-			});
-		</script>
-	</div>
- 
 	<div id="fb-root"></div>
 	<script type="text/javascript">
   	    var appId = '125980610784627';
@@ -39,5 +26,18 @@
 		document.getElementById('fb-root').appendChild(e);
 	  }());
 	</script>	
+	
+	<div>
+		<script type="text/javascript">
+			$(document).bind('facebookReady', function(){
+				FB.ui({
+						method: 'apprequests',
+						message: 'Test request',
+						title: 'Title',  
+						display: 'iframe', 
+						});
+			});
+		</script>
+	</div>	
  </body>
 </html>
