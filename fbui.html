@@ -99,7 +99,7 @@
 	 
 	 function postSponsor() {
         FB.api(
-        '/me/jgdonationtest:sponsor',
+        '/me/jgdonationtest:sponsor?fundraiser=http://samples.ogp.me/246265782089442',
         'post',
         function(response) {
            if (!response || response.error) {
