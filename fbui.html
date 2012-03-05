@@ -56,7 +56,7 @@
 	      if (userLoggedIn) {
 			FB.api('/me', function(resp) {
 			   console.log(resp);
-			   $('#userDetails').innerHTML = '<img src="https://graph.facebook.com/' + response.id + '/picture">' + response.name;
+			   $('#userDetails').append('<img src="https://graph.facebook.com/' + response.id + '/picture">' + response.name);
 			});
 		  }
        	  $('#login').toggle(!userLoggedIn);
