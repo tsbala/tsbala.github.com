@@ -73,11 +73,6 @@
 			   
 			});
 			
-			FB.api('/me/permissions', function(resp) {
-				if (!resp.publish_actions) {
-				   FB.lg(userDetails(true), { scope: 'publish_actions'});
-				}
-			});
 			//getFriends();
 		  }
        	  $('#login').toggle(!userLoggedIn);
