@@ -44,6 +44,7 @@
 	   });
 	   
 	   FB.Event.subscribe('auth.authResponseChange', function(response) {
+	      alert('In here');
 	      document.body.className = response.authResponse ? 'connected' : 'not_connected';
 		  console.log(response);
 	      if (response.authResponse) {
