@@ -3,8 +3,7 @@
 <head>
 </head>
 <body>
-	<div class="fb-login-button" data-show-faces="true" data-width="500" data-max-rows="1">
-	</div>	
+	<div class="fb-login-button" data-show-faces="true" data-width="500" data-max-rows="1"></div>	
 	<div id="logout">
 	   <p><button  onClick="FB.logout();">Logout</button></p>
 	</div>
@@ -38,11 +37,19 @@
 	   
 	   FB.Event.subscribe('auth.statusChange', function(response) {
 	      if (response.authResponse) {
-		     console.log('use already logged in');
+		    $('#logout').show();
 		  }
 	   });
 	 }
 	   
+	</script>
+	
+	<script>
+		(function($) {
+			$(function() {
+				$('#logout').hide();
+			});
+		})(jQuery);
 	</script>
 </body>
 </html>
