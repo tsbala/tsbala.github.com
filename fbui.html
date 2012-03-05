@@ -12,11 +12,10 @@
 	
 	<div data-role='content'>
 		<div id="login">
-			<div class="fb-login-button" data-show-faces='false' data-width="500" data-max-rows="1"></div>	
+			<div class="fb-login-button" data-show-faces="false" data-width="500" data-max-rows="1"></div>	
 		</div>
 		
 		<div id="logout">
-		   <p><label id='fbUserName'/></p>
 		   <p><button  onClick="FB.logout();">Logout</button></p>
 		</div>
 	</div>
@@ -48,10 +47,11 @@
 		  console.log(response);
 	      if (response.authResponse) {
 			$('#logout').show();
+			/*
 			FB.api('/me', function(response) {
 				$('#fbUserName').val('Welcome ' + response.Name);
 			});
-			
+			*/
 		    
 		  } else {
 		    $('#login').show();
