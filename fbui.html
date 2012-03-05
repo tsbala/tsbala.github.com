@@ -1,25 +1,29 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="https://www.facebook.com/2008/fbml">
-  <head>
-    <title>Request Tester C</title>
-  </head>
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div id="login">
+   <p><button onClick="loginUser();">Login</button></p>
+</div>
+<div id="logout">
+   <p><button  onClick="FB.logout();">Logout</button></p>
+</div>
 
-  <body>
-    <div id="fb-root"></div>
-    <script src="http://connect.facebook.net/en_US/all.js"></script>
-    <p>
-      <input type="button"
-        onclick="sendRequestToOneRecipient(); return false;"
-        value="Send Request to One User"
-      />
-      <input type="text" value="User ID" name="user_id" />
-      </p>
-    <p>
-    <input type="button"
-      onclick="sendRequestToManyRecipients(); return false;"
-      value="Send Request to Many Users"
-    />
-    </p>
-    
+ <script>
+   function loginUser() {    
+     FB.login(function(response) { }, {scope:'email'});     
+     }
+ </script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<div id="fb-root"></div>
+<script>
+  (function() {
+    var e = document.createElement('script'); e.async = true;
+        e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+        document.getElementById('fb-root').appendChild(e);
+        }());
+</script>
     <script>
       FB.init({
         appId  : '123490264376629',
@@ -27,26 +31,6 @@
         cookie : true,
         oauth: true
       });
-
-      function sendRequestToOneRecipient() {
-        var user_id = document.getElementsByName("user_id")[0].value;
-        FB.ui({method: 'apprequests',
-          message: 'My Great Request',
-          to: user_id, 
-        }, requestCallback);
-      }
-
-      function sendRequestToManyRecipients() {
-        FB.ui({method: 'apprequests',
-          message: 'My Great Request',
-		  display: 'iframe',
-		  data: ''
-        }, requestCallback);
-      }
-      
-      function requestCallback(response) {
-        // Handle callback here
-      }
-    </script>
-  </body>
+</script>
+</body>
 </html>
