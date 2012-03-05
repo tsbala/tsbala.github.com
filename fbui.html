@@ -54,6 +54,7 @@
 	      document.body.className = userLoggedIn ? 'connected' : 'not_connected';
 	      if (userLoggedIn) {
 			FB.api('/me', function(resp) {
+			   console.log(resp);
 			   $('#userDetails').text('Hello ' + resp.Name);
 			});
 		  }
