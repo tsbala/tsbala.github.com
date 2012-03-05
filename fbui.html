@@ -46,11 +46,12 @@
 	   FB.Event.subscribe('auth.authResponseChange', function(response) {
 	      document.body.className = response.authResponse ? 'connected' : 'not_connected';
 	      if (response.authResponse) {
+			$('#logout').show();
 			FB.api('/me', function(response) {
 				$('#fbUserName').val('Welcome ' + response.Name);
 			});
 			
-		    $('#logout').show();
+		    
 		  } else {
 		    $('#login').show();
 		  }
