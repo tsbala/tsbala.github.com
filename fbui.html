@@ -31,7 +31,7 @@
 		   <p><button  onClick='FB.logout();'>Logout</button></p>
 		</div>
 	</div>
-	
+	<fb:add-to-timeline></fb:add-to-timeline>
 	<input type="button" value="Sponsor on JustGiving" onclick="postSponsor()" />
 
 	<div id='fb-root'></div>
@@ -71,7 +71,7 @@
 			   $('#userDetails').append('<img src="https://graph.facebook.com/' + resp.id + '/picture">' + resp.name);
 			   
 			});
-			getFriends();
+			//getFriends();
 		  }
        	  $('#login').toggle(!userLoggedIn);
 		  $('#logout').toggle(userLoggedIn);
