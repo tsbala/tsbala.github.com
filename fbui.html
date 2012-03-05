@@ -57,10 +57,18 @@
 			FB.api('/me', function(resp) {
 			   console.log(resp);
 			   $('#userDetails').append('<img src="https://graph.facebook.com/' + resp.id + '/picture">' + resp.name);
+			   
 			});
+			getFriends();
 		  }
        	  $('#login').toggle(!userLoggedIn);
 		  $('#logout').toggle(userLoggedIn);
+	 }
+	 
+	 function getFriends() {
+		FB.api('/me/friends', function(resp) {
+			console.log(resp);
+		});
 	 }
 	   
 	</script>
