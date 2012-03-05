@@ -64,7 +64,11 @@
 		  if (response.status === 'connected') {
 			FB.api('/me/permissions', function(resp) {
 				if (!resp.publish_actions) {
-					FB.login(null, { scope: 'publish_actions' });
+					FB.login(function(res) {
+						if (res.authResponse) {
+							console.log('User has granted required permissions');
+						}
+					}, { scope: 'email,publish_actions' });
 				}
 			});
 		  }
