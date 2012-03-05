@@ -35,13 +35,13 @@
 			xfbml: true,
 			oauth: true
 	   });
-	   }
 	   
 	   FB.Event.subscribe('auth.statusChange', function(response) {
 	      if (response.authResponse) {
 		     console.log('use already logged in');
 		  }
 	   });
+	 }
 	   
 	</script>
 </body>
