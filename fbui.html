@@ -42,17 +42,23 @@
 	   });
 	   
 	   FB.Event.subscribe('auth.authResponseChange', function(response) {
-	      alert('In here');
-	      document.body.className = response.authResponse ? 'connected' : 'not_connected';
-		  console.log(response);
-	      if (response.authResponse) {
+	      userDetails(response.authResponse);
+	   });
+	   
+	   FB.getLoginStatus(function(response) {
+		  userDetails(response.status === 'connected');
+	   });
+	 }
+	 
+	 function userDetails(userLoggedIn) {
+	      document.body.className = userLoggedIn ? 'connected' : 'not_connected';
+	      if (userLoggedIn) {
 			FB.api('/me', function(resp) {
 			   $('#userDetails').val('Hello ' + resp.Name);
 			});
 		  }
        	  $('#login').togle();
 		  $('#logout').toggle();
-	   });
 	 }
 	   
 	</script>
