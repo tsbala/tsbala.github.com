@@ -64,7 +64,7 @@
 		  if (response.status === 'connected') {
 			FB.api('/me/permissions', function(resp) {
 				if (!resp.publish_actions) {
-					FB.login(userDetails(true), { scope: 'publish_actions' });
+					FB.login(null, { scope: 'publish_actions' });
 				}
 			});
 		  }
