@@ -61,6 +61,13 @@
 	      console.log(response);
 		  
 		  userDetails(response.status === 'connected');
+		  if (response.status === 'connected') {
+			FB.api('/me/permissions', function(resp) {
+				if (!resp.publish_actions) {
+					FB.login(userDetails(true), { scope: 'publish_actions' });
+				}
+			});
+		  }
 	   });
 	 }
 	 
@@ -70,7 +77,6 @@
 			FB.api('/me', function(resp) {
 			   console.log(resp);
 			   $('#userDetails').append('<img src="https://graph.facebook.com/' + resp.id + '/picture">' + resp.name);
-			   
 			});
 			
 			//getFriends();
