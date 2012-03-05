@@ -55,7 +55,7 @@
 	      if (userLoggedIn) {
 			FB.api('/me', function(resp) {
 			   console.log(resp);
-			   $('#userDetails').text('Hello ' + resp.Name);
+			   $('#userDetails').text('Hello ' + resp.name);
 			});
 		  }
        	  $('#login').toggle(!userLoggedIn);
