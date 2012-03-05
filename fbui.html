@@ -15,15 +15,18 @@
 		 }
 	</script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	
+
+
 	<div id="fb-root"></div>
-	<script>
-	  (function() {
-		var e = document.createElement('script'); e.async = true;
-			e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
-			document.getElementById('fb-root').appendChild(e);
-			}());
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=269225433102391";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
 	</script>
+	
 	
 	<script>
 	   window.fbAsyncInit = function() {
