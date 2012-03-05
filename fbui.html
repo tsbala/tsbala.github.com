@@ -48,12 +48,6 @@
 		  console.log(response);
 	      if (response.authResponse) {
 			$('#logout').show();
-			/*
-			FB.api('/me', function(response) {
-				$('#fbUserName').val('Welcome ' + response.Name);
-			});
-			*/
-		    
 		  } else {
 		    $('#login').show();
 		  }
