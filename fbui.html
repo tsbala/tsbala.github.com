@@ -12,14 +12,22 @@
     <script>
 	   function loginUser() {    
 		 FB.login(function(response) { }, {scope:'email'});     
-		 }
+	   }
 	</script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
 
 	<div id="fb-root"></div>
 	<script>
-	   window.fbAsyncInit = function() {
+	  (function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=269225433102391";
+		fjs.parentNode.insertBefore(js, fjs);
+	  }(document, 'script', 'facebook-jssdk'));	   
+
+	  window.fbAsyncInit = function() {
 	   FB.init({
 			appId  : '269225433102391',
 			status : true,
@@ -35,13 +43,6 @@
 		  }
 	   });
 	   
-	  (function(d, s, id) {
-		var js, fjs = d.getElementsByTagName(s)[0];
-		if (d.getElementById(id)) return;
-		js = d.createElement(s); js.id = id;
-		js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=269225433102391";
-		fjs.parentNode.insertBefore(js, fjs);
-	  }(document, 'script', 'facebook-jssdk'));	   
 	</script>
 </body>
 </html>
