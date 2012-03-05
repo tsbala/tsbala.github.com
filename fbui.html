@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head prefix="og: http://ogp.me/ns# jgdonationtest: http://ogp.me/ns/apps/jgdonationtest#>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.css" />
 	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.js"></script>	
+	<script src="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.js"></script>
+  <meta property="fb:app_id"                       content="125980610784627" /> 
+  <meta property="og:type"                         content="jgdonationtest:fundraiser" /> 
+  <meta property="og:url"                          content="www.justgiving.com/no-whey" /> 
+  <meta property="og:title"                        content="Jonathan Waddingham" /> 
+  <meta property="og:description"                  content="Blah blah is fundraising for blah blah" /> 
+  <meta property="og:image"                        content="http://ogp.me/logo.png" /> 
+  <meta property="jgdonationtest:fundraising_page" content="http://samples.ogp.me/246266202089400" /> 
+  <meta property="jgdonationtest:charity"          content="http://samples.ogp.me/246265062089514" /> 
+  <meta property="jgdonationtest:event"            content="http://samples.ogp.me/246265408756146" /> 
 </head>
 <body>
 	<div data-role='header'>
@@ -21,6 +31,8 @@
 		   <p><button  onClick='FB.logout();'>Logout</button></p>
 		</div>
 	</div>
+	
+	<input type="button" value="Sponsor on JustGiving" onclick="postSponsor()" />
 
 	<div id='fb-root'></div>
 	<script>
@@ -72,6 +84,19 @@
 			}
 		});
 	 }
+	 
+	 function postSponsor() {
+        FB.api(
+        '/me/jgdonationtest:sponsor',
+        'post',
+        function(response) {
+           if (!response || response.error) {
+              alert('Error occured');
+           } else {
+              alert('Sponsorship done! Action ID: ' + response.id);
+           }
+        });
+	}
 	   
 	</script>
 	
