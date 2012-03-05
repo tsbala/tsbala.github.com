@@ -57,8 +57,8 @@
 			   $('#userDetails').text('Hello ' + resp.Name);
 			});
 		  }
-       	  $('#login').toggle();
-		  $('#logout').toggle();
+       	  $('#login').toggle(!userLoggedIn);
+		  $('#logout').toggle(userLoggedIn);
 	 }
 	   
 	</script>
