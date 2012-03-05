@@ -54,7 +54,7 @@
 	      document.body.className = userLoggedIn ? 'connected' : 'not_connected';
 	      if (userLoggedIn) {
 			FB.api('/me', function(resp) {
-			   $('#userDetails').val('Hello ' + resp.Name);
+			   $('#userDetails').text('Hello ' + resp.Name);
 			});
 		  }
        	  $('#login').toggle();
