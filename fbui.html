@@ -67,7 +67,9 @@
 	 
 	 function getFriends() {
 		FB.api('/me/friends', function(resp) {
-			console.log(resp);
+			for (int i = 0; i < resp.data.length; i++) {
+				$('#userDetails').append('<div><img src="https://graph.facebook.com/' + resp.data[i].id + '/picture">' + resp.data[i].name</div>');
+			}
 		});
 	 }
 	   
