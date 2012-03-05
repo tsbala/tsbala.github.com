@@ -3,16 +3,14 @@
 <head>
 </head>
 <body>
-	<div class="fb-login-button" data-show-faces="true" data-width="500" data-max-rows="1"></div>	
+	<div id="login">
+		<div class="fb-login-button" data-show-faces="true" data-width="500" data-max-rows="1"></div>	
+	</div>
+	
 	<div id="logout">
 	   <p><button  onClick="FB.logout();">Logout</button></p>
 	</div>
 
-    <script>
-	   function loginUser() {    
-		 FB.login(function(response) { }, {scope:'email'});     
-	   }
-	</script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
 
@@ -35,9 +33,12 @@
 			oauth  : true
 	   });
 	   
-	   FB.Event.subscribe('auth.statusChange', function(response) {
+	   FB.Event.subscribe('auth.authResponseChange', function(response) {
+	      document.body.className = response.authResponse ? 'connected' : 'not_connected';
 	      if (response.authResponse) {
 		    $('#logout').show();
+		  } else {
+		    $('#login').show();
 		  }
 	   });
 	 }
@@ -47,7 +48,7 @@
 	<script>
 		(function($) {
 			$(function() {
-				$('#logout').hide();
+				$('#logout #login').hide();
 			});
 		})(jQuery);
 	</script>
