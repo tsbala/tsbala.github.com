@@ -17,6 +17,7 @@
 		</div>
 		
 		<div id='logout'>
+		   <p id="userDetails"/>
 		   <p><button  onClick='FB.logout();'>Logout</button></p>
 		</div>
 	</div>
@@ -45,10 +46,12 @@
 	      document.body.className = response.authResponse ? 'connected' : 'not_connected';
 		  console.log(response);
 	      if (response.authResponse) {
-			$('#logout').show();
-		  } else {
-		    $('#login').show();
+			FB.api('/me', function(resp) {
+			   $('#userDetails').val('Hello ' + resp.Name);
+			});
 		  }
+       	  $('#login').togle();
+		  $('#logout').toggle();
 	   });
 	 }
 	   
@@ -57,7 +60,7 @@
 	<script>
 		(function($) {
 			$(function() {
-			    $('#login').hide();
+			    $('#login').show();
 				$('#logout').hide();
 			});
 		})(jQuery);
