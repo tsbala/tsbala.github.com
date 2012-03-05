@@ -45,8 +45,8 @@
 	      userDetails(response.authResponse);
 	   });
 	   
-	   FB.getLoginStatus(function(response) {
-		  userDetails(response.status === 'connected');
+       FB.login(function(response) {
+		  userDetails(response.authResponse);
 	   });
 	 }
 	 
