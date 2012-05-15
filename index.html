@@ -1,33 +1,101 @@
-<!DOCTYPE html> 
-<html> 
-	<head> 
-	<title>My Page</title> 
-    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1"> 
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
-	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
-    <script type="text/javascript">
-        (function ($) {
-            $(document).bind("mobileinit", function () {
-                $.mobile.ajaxEnabled = false;
-            });
-        })(jQuery);
-    </script>	
-</head> 
-<body> 
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;">
+    <title>Home - JustGiving Mobile</title>
+    <link href="/content/tabulous/css/mobile.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" async="" src="https://ssl.google-analytics.com/ga.js"></script><script type="text/javascript" src="/scripts/jquery/jquery-1.4.2.min.js"></script>    
+    
+	<script src="/scripts/jg.core.js" type="text/javascript"></script>
+    
+</head>
+<body class=" container">
+    <div class="site-header">        
+        <a href="/" class="float-l" id="logo"><img src="/content/images/logos/justgiving/jg-logo-stencil-transparent.png" width="160" height="34" alt="JustGiving"></a>
+        <br class="clear">
+    </div>
+    <!--Home-->    
+    
+    
+    
+    
 
-<div data-role="page">
 
-	<div data-role="header">
-		<h1>My Title</h1>
-	</div><!-- /header -->
+    <div id="sponsorAFriend" class="section">
+        <h2>Find a friend to sponsor</h2>
+        <div class="feature">
+            <label for="friend-search">Friend's name</label>
+            <form method="get" action="/fundraiser/search">
+            <div>
+                <input type="hidden" name="type" value="fundraiser">
+                <input type="text" value="" maxlength="150" class="txt erase-default" name="q" id="friend-search">
+                <input type="submit" class="go-btn" value="Go" id="FButton">            
+            </div>  
+            </form>      
+        </div>
+    </div>
 
-	<div data-role="content">	
-		<p>Hello world</p>		
-	</div><!-- /content -->
+    <div id="findACharity" class="section">
+        <h2>Find a charity to support</h2>
+        <div class="feature">
+            <label for="charity-search">Charity's name</label>
+            <form method="get" action="/Charity/Search">
+            <div>            
+                <input type="text" value="" maxlength="250" class="txt erase-default charity-suggest" name="query" id="charity-search">
+                <input type="submit" class="go-btn" value="Go" id="CButton">            
+            </div>
+            </form>      
+        </div>
+    </div>
 
-</div><!-- /page -->
 
-</body>
-</html>
+
+    
+    <div id="loginBit" class="section">
+        <h2>Your account</h2>
+        <div class="feature">
+             
+            <p><a data-ajax="false" href="/login">Login to your account</a></p>
+            
+        </div>
+    </div>   
+
+
+
+    <hr class="hidden">
+    <div class="site-footer">
+        <ul>
+            <li><a href="/">JustGiving</a></li>
+        </ul>
+    </div>
+    <div id="navTools">
+        <ul>
+            
+     
+                            
+            <li><a href="/help">Help</a></li>
+            <li><a href="/?targetdevice=desktop">View full site</a></li> 
+
+
+              
+
+
+            <li><a href="/info/terms-of-service/">Terms of service</a></li>
+            <li><a href="http://justgiving-charity-support.zendesk.com/home">Charities help</a></li>
+        </ul>
+    </div>    
+     
+
+<script type="text/javascript">
+try {
+    JustGiving.Analytics.push(['_setAccount', 'UA-8372233-1']);
+    JustGiving.Analytics.push(['_setDomainName', 'local.justgiving.com']);
+    JustGiving.Analytics.TrackFacebookLikeSourceAndRef.Push();   
+    
+        JustGiving.Analytics.push(['_trackPageview']);
+    
+} catch (err) {
+    JustGiving.WriteConsole(err);
+}
+</script>
+
+</body></html>
